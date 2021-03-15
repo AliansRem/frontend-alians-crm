@@ -7,18 +7,20 @@ import LogOut from './LogOut'
 
 export type HeaderProps = {
   openMenu: () => void
+  logOut: () => void
 }
 
 const Header: React.FC<HeaderProps> = ({
-  openMenu
+  openMenu,
+  logOut
 }) => {
   return (
-    <PageHeader 
+    <PageHeader
       title='Alians CRM'
       subTitle={<SubTitle />}
       onBack={openMenu}
       backIcon={<MenuOutlined />}
-      extra={<LogOut />}
+      extra={<LogOut logOut={logOut} />}
     />
   )
 }

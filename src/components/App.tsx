@@ -3,11 +3,13 @@ import Workspace from './Workspace';
 import Auth from './Auth';
 import Header from './Header';
 import Menu from './Menu';
+import { getToken } from '../API/Auth';
 
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(true)
+  const [isAuthenticated, setIsAuthenticated] = useState(!!getToken())
   const logIn = () => setIsAuthenticated(true)
+  const logOut = () => setIsAuthenticated(false)
 
   const [menuVisible, setMenuVisible] = useState(false)
   const openMenu = () => setMenuVisible(true)
@@ -15,7 +17,7 @@ const App = () => {
 
   if (!isAuthenticated) {
     return (
-      <Auth 
+      <Auth
         logIn={logIn}
       />
     )
@@ -23,10 +25,11 @@ const App = () => {
 
   return (
     <>
-      <Header 
+      <Header
         openMenu={openMenu}
+        logOut={logOut}
       />
-      <Menu 
+      <Menu
         visible={menuVisible}
         close={closeMenu}
       />
