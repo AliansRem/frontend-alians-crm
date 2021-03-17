@@ -1,16 +1,21 @@
 import { Button, Form, FormProps, Input } from 'antd'
 import React from 'react'
-
-
 const AuthForm: React.FC<FormProps> = props => (
   <Form
     {...props}
     layout='vertical'
   >
+
     <Form.Item
       required
       name='username'
       label='Логин'
+      rules={[
+        {
+        required: true,
+        message: 'Введите логин!',
+      },
+      ]}
     >
       <Input />
     </Form.Item>
@@ -19,6 +24,12 @@ const AuthForm: React.FC<FormProps> = props => (
       required
       name='password'
       label='Пароль'
+      rules={[
+        {
+        required: true,
+        message: 'Введите пароль!',
+        },
+      ]}
     >
       <Input.Password />
     </Form.Item>
@@ -32,6 +43,7 @@ const AuthForm: React.FC<FormProps> = props => (
       </Button>
     </Form.Item>
   </Form>
+
 )
 
 export default AuthForm
