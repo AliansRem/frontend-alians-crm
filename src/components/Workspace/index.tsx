@@ -1,11 +1,11 @@
 import React from 'react'
 import { Switch } from 'react-router'
-import classes from './index.module.css'
+import './style.css'
 
 const Workspace: React.FC = () => {
   return (
     <div
-      className={classes.Workspace}
+      className='Workspace'
     >
       <Switch>
 
